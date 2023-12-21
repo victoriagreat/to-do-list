@@ -64,3 +64,16 @@ li {
 .remove-btn:hover {
     background-color: #c82333;
 }
+
+
+@media only screen and (max-width: 600px) {
+    .container {
+        max-width: 100%;
+        margin: 10px auto;
+        padding: 10px; 
+    }
+
+    input[type="text"] {
+        width: 60%; 
+    }
+}

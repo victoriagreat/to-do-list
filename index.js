@@ -5,7 +5,8 @@ function addTask() {
     if (taskInput.value.trim() !== '') {
         const li = document.createElement('li');
         li.innerHTML = `
-            ${taskInput.value}
+            <input type="checkbox" class="task-checkbox" onclick="toggleTaskCompletion(this)">
+            <span class="task-name">${taskInput.value}</span>
             <button class="remove-btn" onclick="removeTask(this)">Remove</button>
         `;
         taskList.appendChild(li);
@@ -18,4 +19,17 @@ function addTask() {
 function removeTask(task) {
     const taskItem = task.parentElement;
     taskItem.remove();
+}
+
+function toggleTaskCompletion(checkbox) {
+    const taskName = checkbox.nextElementSibling;
+    taskName.classList.toggle('completed');
+}
+
+function editTask(taskNameElement) {
+    const previousTaskName = taskNameElement.textContent;
+    const newTaskName = prompt('Edit task:', previousTaskName);
+    if (newTaskName !== null && newTaskName.trim() !== '') {
+        taskNameElement.textContent = newTaskName;
+    }
 }
